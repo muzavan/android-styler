@@ -1,0 +1,58 @@
+<html>
+    <head>
+        <title>Android Styler</title>
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="bootstrap.min.css" />
+        <script src="jquery.min.js"></script>
+    </head>
+    <body>
+        <div class="container">
+            <div class="row">
+                <center><h2>Android Styler</h2></center>
+                <div class="col-md-5">
+                    <textarea id="android-code" style="width:100%;height : 300px;">
+                        Paste your component style here!
+                    </textarea>
+                </div>
+                <div class="col-md-2" style="height : 300px; top : 30%;">
+                    <center><button type="button" class="btn btn-primary" id="button-code">Convert to Style</button></center>
+                </div>
+                <div class="col-md-5">
+                    <textarea id="android-style" style="width:100%;height : 300px;">
+
+                    </textarea>
+                </div>
+            </div>
+        </div>
+        
+        <script type="text/javascript">
+            $("#button-code").on("click",function(e){
+                codeToStyle("android-code","android-style");
+            });
+            
+            function codeToStyle(code_id,style_id){
+                var component = $("#"+code_id).val();
+                var attrs = {};
+                
+                while(component.indexOf("android:") != -1){
+                    var attr = component.substr(component.indexOf("android:"),component.indexOf("=")-component.indexOf("android:"));
+                    component = component.substr(component.indexOf("\"")+1);
+                    var value = component.substr(0,component.indexOf("\""));
+                    attrs[attr] = value;
+                    component = component.substr(component.indexOf("\"")+1);
+                }
+                
+                var results = "<style name=\"android_styler\">\n";
+                
+                $.each(attrs,function(a,v){
+                   results += "\t<item name=\""+a+"\">"+v+"</item> \n";        
+                });
+                
+                results+="</style>";
+                
+                $("#"+style_id).val(results);
+            };
+            
+        </script>
+    </body>
+</html>

@@ -1,0 +1,6 @@
+{
+  "name": "Android-styler",
+  "tagline": "",
+  "body": "## Android Styler\r\n\r\nConvert android style in text-section in layout, to style description in styles.xml.\r\n\r\n## Example\r\n\r\n![Example](https://raw.githubusercontent.com/muzavan/android-styler/master/example.png)\r\n\r\n## Usage\r\n\r\nClone this repo.\r\n\r\n`git clone https://github.com/muzavan/android-styler`\r\n\r\nGo to directory.\r\n\r\n`cd android-styker`\r\n\r\nOpen index.html in your browser. Should be working.\r\n\r\n\r\n",
+  "note": "Don't delete this file! It's used internally to help with page regeneration."
+}
